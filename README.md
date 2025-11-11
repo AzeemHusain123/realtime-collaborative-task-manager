@@ -45,7 +45,7 @@ It simulates **real-time collaboration**, user authentication, and task manageme
 ---
 
 
-🧠 Learning Outcomes
+## 🧠 Learning Outcomes
 Through this project, I gained experience in:
 - Advanced DOM manipulation and event delegation
 - Client-side data persistence with localStorage
