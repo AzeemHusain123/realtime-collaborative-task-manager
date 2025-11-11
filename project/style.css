@@ -1,0 +1,516 @@
+/* Improved Color Scheme: Switched to a unique teal-amber-purple palette for a modern, professional look. 
+   Primary: Teal (#14b8a6) for main actions and highlights.
+   Success: Emerald (#10b981) for positive states.
+   Warning: Amber (#f59e0b) for in-progress or medium priority.
+   Danger: Coral (#fb7185) for errors or high priority.
+   Info: Purple (#9333ea) for additional accents.
+   This replaces the generic blue tones for better visual appeal and consistency across buttons, icons, and highlights. */
+
+   :root {
+    --primary-color: #14b8a6; /* Teal for primary actions */
+    --secondary-color: #858796;
+    --success-color: #10b981; /* Emerald for success */
+    --danger-color: #fb7185; /* Coral for danger */
+    --warning-color: #f59e0b; /* Amber for warnings */
+    --info-color: #9333ea; /* Purple for info */
+    --light-color: #f8f9fc;
+    --dark-color: #5a5c69;
+    --body-bg: #f8f9fc;
+    --card-bg: #ffffff;
+    --text-color: #3a3b45;
+    --muted-text: #858796;
+    --border-color: #e3e6f0;
+    --shadow-color: rgba(0, 0, 0, 0.075);
+}
+
+/* Enhanced Dark Mode Readability: Adjusted contrasts for better visibility.
+   - Light text on dark backgrounds.
+   - Increased contrast for navbar, sidebar, labels, and icons.
+   - Hover/active states now have brighter highlights for distinction in both modes. */
+
+body.dark-mode {
+    --primary-color: #14b8a6;
+    --secondary-color: #858796;
+    --success-color: #10b981;
+    --danger-color: #fb7185;
+    --warning-color: #f59e0b;
+    --info-color: #9333ea;
+    --light-color: #3a3b45;
+    --dark-color: #d1d3e2;
+    --body-bg: #1c1f2f;
+    --card-bg: #2a2d48;
+    --text-color: #d1d3e2; /* Lighter text for readability */
+    --muted-text: #b0b3c4; /* Adjusted muted text for better contrast */
+    --border-color: #3e4262;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+    background-color: var(--card-bg) !important;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.sidebar {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    height: calc(100vh - 100px);
+    position: sticky;
+    top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.main-content {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    min-height: calc(100vh - 100px);
+    transition: background-color 0.3s ease;
+}
+
+.task-card {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    cursor: move;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+.task-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 15px var(--shadow-color);
+}
+
+.task-card.overdue {
+    border: 2px solid var(--danger-color);
+    background-color: rgba(var(--danger-color), 0.1); /* Adjusted for color scheme */
+}
+
+.priority-high {
+    border-left: 4px solid var(--danger-color);
+}
+
+.priority-medium {
+    border-left: 4px solid var(--warning-color);
+}
+
+.priority-low {
+    border-left: 4px solid var(--success-color);
+}
+
+.kanban-column {
+    min-height: 500px;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.kanban-header {
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 2px solid var(--border-color);
+    background: linear-gradient(to right, var(--primary-color), transparent);
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.badge-priority {
+    font-size: 0.7rem;
+}
+
+.task-dragging {
+    opacity: 0.7;
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 10px 20px var(--shadow-color);
+    z-index: 1000;
+}
+
+.drop-zone-active {
+    background-color: rgba(var(--primary-color), 0.2); /* Updated to match new primary */
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    transition: background-color 0.2s ease, border 0.2s ease;
+}
+
+.activity-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.comment-item {
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.login-container {
+    max-width: 450px;
+    margin: 150px auto;
+    background: linear-gradient(135deg, var(--card-bg), rgba(var(--primary-color), 0.05)); /* Updated gradient */
+    border-radius: 20px;
+    box-shadow: 0 15px 30px var(--shadow-color);
+    padding: 40px;
+    transition: background 0.3s ease;
+}
+
+.stats-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: var(--light-color);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: scale(1.05);
+}
+
+.stats-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stats-label {
+    font-size: 0.9rem;
+    color: var(--muted-text);
+}
+
+.filter-section {
+    background-color: var(--light-color);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.team-member:hover {
+    background-color: rgba(var(--primary-color), 0.1); /* Updated hover */
+}
+
+.team-member:last-child {
+    border-bottom: none;
+}
+
+.task-actions {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.task-card:hover .task-actions {
+    opacity: 1;
+}
+
+.calendar-day {
+    height: 120px;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day.other-month {
+    background-color: var(--light-color);
+    color: var(--muted-text);
+}
+
+.calendar-day.today {
+    background-color: rgba(var(--primary-color), 0.1); /* Updated today highlight */
+}
+
+.calendar-task {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+    margin-bottom: 3px;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: transform 0.3s ease;
+}
+
+.calendar-task:hover {
+    transform: scale(1.05);
+}
+
+.calendar-task.overdue {
+    background-color: rgba(var(--danger-color), 0.2) !important;
+    border-left: 3px solid var(--danger-color) !important;
+}
+
+.task-priority-high {
+    background-color: rgba(var(--danger-color), 0.1);
+    border-left: 3px solid var(--danger-color);
+}
+
+.task-priority-medium {
+    background-color: rgba(var(--warning-color), 0.1);
+    border-left: 3px solid var(--warning-color);
+}
+
+.task-priority-low {
+    background-color: rgba(var(--success-color), 0.1);
+    border-left: 3px solid var(--success-color);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+}
+
+.calendar-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.calendar-cell {
+    background-color: var(--card-bg);
+    min-height: 120px;
+    padding: 5px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-cell.other-month {
+    background-color: var(--light-color);
+    color: var(--muted-text);
+}
+
+.calendar-cell.today {
+    background-color: rgba(var(--primary-color), 0.1);
+}
+
+.calendar-date {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.task-count {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.task-count:hover {
+    transform: scale(1.1);
+}
+
+.table {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(var(--primary-color), 0.1); /* Updated table hover */
+}
+
+.badge.bg-danger {
+    background-color: var(--danger-color) !important;
+}
+
+.badge.bg-warning {
+    background-color: var(--warning-color) !important;
+}
+
+.badge.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.overdue-badge {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        min-height: auto;
+    }
+
+    .kanban-column {
+        min-height: 300px;
+    }
+
+    .calendar-cell {
+        min-height: 80px;
+    }
+
+    .login-container {
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    .row.g-3 {
+        flex-direction: column;
+    }
+
+    .task-card {
+        cursor: default; /* Disable drag cursor on mobile for better touch support */
+    }
+}
+
+/* Hover and Focus Effects - Enhanced for better distinction in dark mode */
+.btn:hover, .btn:focus {
+    box-shadow: 0 0 10px rgba(var(--primary-color), 0.5); /* Updated shadow color */
+    transform: scale(1.05);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color), 0.25);
+}
+
+/* Gradient for Headers - Updated to use new primary and info colors */
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--info-color)) !important;
+    color: #fff !important;
+}
+
+body.dark-mode .text-muted {
+    color: #ffffff !important;
+}
+
+body.dark-mode .nav-link {
+    color: #ffffff !important;
+}
+
+/* Status Button Styling */
+.status {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.status-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    width: 100px;
+}
+
+.status-btn.done {
+    background-color: var(--success-color); /* Emerald green for 'done' to ensure visibility in light mode */
+    color: #ffffff;
+}
+
+body.dark-mode .status {
+    color: var(--text-color);
+}
+
+body.dark-mode .status-container {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .status-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+body.dark-mode .status-btn.done {
+    background-color: var(--success-color); /* Consistent 'done' color in dark mode */
+    color: #ffffff;
+}
